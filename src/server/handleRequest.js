@@ -26,5 +26,20 @@ function PostHandler(req, res, next) {
  
 }
 
+
+//set aylien api credentials
+
+const aylienApi = new aylien({
+
+    application_id: "fbc017dc",
+    application_key: "2fd321e518749e8c593894ffa3e37eb4"
+});
+
+const someData ={
+
+    url: articleUrl
+};
+
+
 exports.validateInputRequest = validateInputRequest;
 exports.PostHandler = PostHandler;
