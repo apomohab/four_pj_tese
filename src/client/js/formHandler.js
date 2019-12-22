@@ -41,4 +41,7 @@ function handleSubmit(event) {
     } 
 }
 
+const res = await postData("http://localhost:8000/save", someData);
+result.textcontent = 'the article polarity and polarity confidenve are : ${res.message} and ${res.message1}';
+
 export { handleSubmit }
