@@ -12,4 +12,47 @@ export{
 	validURL,
 	handleSubmit
 }
- 
+
+
+ app.post("/save", function (req,res){
+
+	console.log(req.body);
+	const parseUrl = req.body.url;
+	console.log(parseUrl);
+
+	if(aylienAPI){
+
+		aylienAPI.sentiment({
+
+			url:parseUrl
+
+		},
+
+		(err , resp) => {
+
+			if(err == null){
+
+				console.log(resp);
+
+				res.json({
+					
+
+					message: resp.polarity,
+					message1 : resp.polarity_confidence
+
+				});
+
+
+			}else{
+
+				const failedText = "could not classify his news articles";
+
+				res.json({
+
+					message: failedText
+				});
+			}
+		}
+		);
+	}
+});
